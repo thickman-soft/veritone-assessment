@@ -1,16 +1,16 @@
-import React, { useRef } from 'react';
-import styled from 'styled-components';
+import React, { useRef } from "react";
+import styled from "styled-components";
 
-import ModalHeader from './ModalHeader';
-import Title from './ModalText/Title';
-import Subtitle from './ModalText/Subtitle';
-import ItemName from './InputFields/ItemName';
-import ItemDesc from './InputFields/ItemDesc';
-import ItemNumber from './InputFields/ItemNumber';
-import ConfirmButtons from './ConfirmButtons';
-import { useDispatch } from 'react-redux';
-import { addItem } from '../redux/list/action';
-import { closeModal } from '../redux/modal/action';
+import ModalHeader from "./ModalHeader";
+import Title from "./ModalText/Title";
+import Subtitle from "./ModalText/Subtitle";
+import ItemName from "./InputFields/ItemName";
+import ItemDesc from "./InputFields/ItemDesc";
+import ItemNumber from "./InputFields/ItemNumber";
+import ConfirmButtons from "./ConfirmButtons";
+import { useDispatch } from "react-redux";
+import { addItem } from "../redux/list/action";
+import { closeModal } from "../redux/modal/action";
 
 const AddModal = styled.div`
   width: 30rem;
@@ -42,9 +42,9 @@ const AddItemModal = () => {
     const num = inputForm.current[2].value;
 
     if (name.length < 1) {
-      alert('Please enter name of item');
+      alert("Please enter name of item");
     } else if (num.length > 5) {
-      alert('Please enter quantity of items to add');
+      alert("Please enter quantity of items to add");
     } else {
       dispatch(addItem(name, desc, num));
       dispatch(closeModal());
@@ -53,17 +53,21 @@ const AddItemModal = () => {
 
   return (
     <AddModal>
-      <ModalHeader modal={'add'} />
+      <ModalHeader modal={"add"} />
       <BodyWrapper>
-        <Title text={'Add an Item'} />
-        <Subtitle text={'Add your new item below'} />
+        <Title text={"Add an Item"} />
+        <Subtitle text={"Add your new item below"} />
         <FormWrapper ref={inputForm}>
-          <ItemName placeholder={'Item Name'} />
-          <ItemDesc placeholder={'Description'} />
-          <ItemNumber placeholder={'How many?'} />
+          <ItemName placeholder={"Item Name"} />
+          <ItemDesc placeholder={"Description"} />
+          <ItemNumber placeholder={"How many?"} />
         </FormWrapper>
       </BodyWrapper>
-      <ConfirmButtons modal={'add'} handleClick={handleClick} buttonText={'Add Item'} />
+      <ConfirmButtons
+        modal={"add"}
+        handleClick={handleClick}
+        buttonText={"Add Item"}
+      />
     </AddModal>
   );
 };

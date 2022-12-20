@@ -32,7 +32,8 @@ const reducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isModalOpen: true,
-        modalType: action.payload.item,
+        modalType: "edit",
+        curItem: action.payload.item,
       };
     case "@modal/CLOSE_MODAL":
       return {

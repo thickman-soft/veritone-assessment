@@ -8,6 +8,9 @@ import ItemName from "./InputFields/ItemName";
 import ItemDesc from "./InputFields/ItemDesc";
 import ItemNumber from "./InputFields/ItemNumber";
 import ConfirmButtons from "./ConfirmButtons";
+import { useDispatch, useSelector } from "react-redux";
+import { updateItem } from "../redux/list/action";
+import { closeModal } from "../redux/modal/action";
 
 const EditModal = styled.div`
   width: 30rem;
@@ -47,9 +50,31 @@ const PurchasedText = styled.label`
 `;
 
 const EditItemModal = () => {
+  const dispatch = useDispatch();
+  const curItem = useSelector((state) => state.modal.curItem);
   const inputForm = useRef();
 
-  const clickFunc = (event) => {};
+  console.log(curItem);
+
+  const updateItemHandler = (event) => {
+    event.preventDefault();
+
+    const name = inputForm.current[0].value;
+    const desc = inputForm.current[1].value;
+    const num = parseInt(inputForm.current[2].value);
+    const isPurchased = inputForm.current[3].checked;
+
+    if (name.length < 1) {
+      alert("Please enter name of item");
+    } else if (num.length > 5) {
+      alert("Please enter quantity of items to add");
+    } else {
+      dispatch(
+        updateItem(curItem.id, { id: curItem.id, name, desc, isPurchased, num })
+      );
+      dispatch(closeModal());
+    }
+  };
 
   return (
     <EditModal>
@@ -58,18 +83,21 @@ const EditItemModal = () => {
         <Title text={"Edit an Item"} />
         <Subtitle text={"Edit your item below"} />
         <FormWrapper ref={inputForm}>
-          <ItemName text={"Item 1"} />
-          <ItemDesc text={"This is Item 1."} />
-          <ItemNumber text={"1"} />
+          <ItemName text={curItem.name} />
+          <ItemDesc text={curItem.desc} />
+          <ItemNumber text={curItem.num} />
           <TextWrapper>
-            <SubmittedBox type="checkbox" defaultChecked={true} />
+            <SubmittedBox
+              type="checkbox"
+              defaultChecked={curItem.isPurchased}
+            />
             <PurchasedText>Purchased</PurchasedText>
           </TextWrapper>
         </FormWrapper>
       </BodyWrapper>
       <ConfirmButtons
         modal={"edit"}
-        handleClick={clickFunc}
+        handleClick={updateItemHandler}
         buttonText={"Save Item"}
       />
     </EditModal>

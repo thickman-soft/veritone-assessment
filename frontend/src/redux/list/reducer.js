@@ -18,7 +18,6 @@ const reducer = (state = INITIAL_STATE, action) => {
             id: state.lastId,
             ...action.payload,
             isPurchased: false,
-            num: 0,
           },
         },
       };
@@ -41,6 +40,7 @@ const reducer = (state = INITIAL_STATE, action) => {
         },
       };
     case "@list/UPDATE_ITEM":
+      console.log(action.payload.item);
       return {
         ...state,
         shoppingList: {

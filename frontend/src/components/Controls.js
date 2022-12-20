@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import { openDeleteModal } from '../redux/modal/action';
+import { openDeleteModal, openEditModal } from '../redux/modal/action';
 
 const ControlIcons = styled.div`
   flex: 0 1 15%;
@@ -26,12 +26,15 @@ const ControlIcons = styled.div`
 
 const Controls = ({ item }) => {
   const dispatch = useDispatch();
+  const editItem = (event) => {
+    dispatch(openEditModal(item));
+  }
   const deleteItem = (event) => {
     dispatch(openDeleteModal(item.id));
   }
   return (
     <ControlIcons>
-      <i className='material-icons'>
+      <i className='material-icons' onClick={editItem}>
         edit
       </i>
       <i className='material-icons' onClick={deleteItem}>
