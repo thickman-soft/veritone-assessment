@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import ListContainer from "./components/ListContainer";
 import Header from "./components/Header";
+import ModalContainer from "./modals/ModalContainer";
 
 const Container = styled.div`
   display: flex;
@@ -15,6 +16,7 @@ function App() {
     <Container>
       <Header />
       <ListContainer />
+      <ModalContainer />
     </Container>
   );
 }

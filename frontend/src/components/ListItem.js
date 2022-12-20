@@ -11,6 +11,10 @@ const ItemWrapper = styled.div`
   height: 6rem;
   margin: 1rem 0rem;
   border: 0.1rem solid var(--item-border);
+  border-color: ${(props) =>
+    props.isChecked ? "transparent" : "var(--item-border)"};
+  background-color: ${(props) =>
+    props.isChecked ? "var(--item-active)" : "transparent"};
   border-radius: 0.2rem;
   transition: 200ms;
 
@@ -34,11 +38,15 @@ const Textbox = styled.div`
 const ItemName = styled.p`
   font-size: 1.1rem;
   margin: 0;
+
+  text-decoration: ${(props) => (props.isChecked ? "line-through" : "none")};
+  color: ${(props) => (props.isChecked ? "var(--checkbox-filled)" : "black")};
 `;
 
 const ItemDesc = styled.p`
   font-size: 1rem;
   margin: 0.1rem 0rem;
+  text-decoration: ${(props) => (props.isChecked ? "line-through" : "none")};
   color: var(--item-desc);
 `;
 
@@ -47,11 +55,11 @@ const ListItem = (props) => {
   const ind = props.ind;
 
   return (
-    <ItemWrapper>
+    <ItemWrapper isChecked={isChecked}>
       <Checkbox isChecked={isChecked} ind={ind} />
       <Textbox>
-        <ItemName>{name}</ItemName>
-        <ItemDesc>{desc}</ItemDesc>
+        <ItemName isChecked={isChecked}>{name}</ItemName>
+        <ItemDesc isChecked={isChecked}>{desc}</ItemDesc>
       </Textbox>
       <Controls ele={{ name, desc, isChecked, count, ind }} ind={ind} />
     </ItemWrapper>

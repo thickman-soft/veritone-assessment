@@ -12,6 +12,7 @@ const CheckboxInput = styled.input`
   height: 1.4rem;
   width: 1.4rem;
   cursor: pointer;
+  accent-color: var(--checkbox-filled);
 `;
 
 const Checkbox = ({ isChecked, ind }) => {

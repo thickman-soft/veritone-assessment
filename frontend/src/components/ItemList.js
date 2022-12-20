@@ -31,11 +31,7 @@ const ItemList = ({ shoppingList }) => {
         <Button>Add Item</Button>
       </ListHeader>
       {shoppingList.map((item, ind) => {
-        return item.isChecked ? (
-          <CrossedItem item={item} ind={ind} key={ind} />
-        ) : (
-          <ListItem item={item} ind={ind} key={ind} />
-        );
+        return <ListItem item={item} ind={ind} key={ind} />;
       })}
     </ListWrapper>
   );
