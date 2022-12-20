@@ -1,5 +1,7 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { crossItem } from "../redux/list/action";
 
 import Checkbox from "./Checkbox";
 import Controls from "./Controls";
@@ -50,12 +52,13 @@ const ItemDesc = styled.p`
   color: var(--item-desc);
 `;
 
-const ListItem = ({item}) => {
-  const { name, desc, isPurchased, count } = item;
+const ListItem = ({ item }) => {
+  const dispatch = useDispatch();
+  const { id, name, desc, isPurchased } = item;
 
   return (
     <ItemWrapper isChecked={isPurchased}>
-      <Checkbox isChecked={isPurchased} />
+      <Checkbox isChecked={isPurchased} id={id} />
       <Textbox>
         <ItemName isChecked={isPurchased}>{name}</ItemName>
         <ItemDesc isChecked={isPurchased}>{desc}</ItemDesc>

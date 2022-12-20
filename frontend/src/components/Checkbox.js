@@ -1,5 +1,7 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { crossItem } from "../redux/list/action";
 
 const CheckboxContainer = styled.div`
   flex: 0 0 10%;
@@ -15,10 +17,19 @@ const CheckboxInput = styled.input`
   accent-color: var(--checkbox-filled);
 `;
 
-const Checkbox = ({ isChecked, ind }) => {
+const Checkbox = ({ isChecked, id }) => {
+  const dispatch = useDispatch();
+  
+  const toggleSelection = () => {
+    dispatch(crossItem(id));
+  };
   return (
     <CheckboxContainer>
-      <CheckboxInput type="checkbox" defaultChecked={isChecked} />
+      <CheckboxInput
+        type="checkbox"
+        checked={isChecked}
+        onClick={toggleSelection}
+      />
     </CheckboxContainer>
   );
 };

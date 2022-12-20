@@ -17,6 +17,8 @@ const reducer = (state = INITIAL_STATE, action) => {
           [state.lastId]: {
             id: state.lastId,
             ...action.payload,
+            isPurchased: false,
+            num: 0,
           },
         },
       };

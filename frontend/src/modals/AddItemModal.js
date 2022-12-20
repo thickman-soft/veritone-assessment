@@ -46,7 +46,7 @@ const AddItemModal = () => {
     } else if (num.length > 5) {
       alert('Please enter quantity of items to add');
     } else {
-      dispatch(addItem({ name, desc, num }));
+      dispatch(addItem(name, desc, num));
       dispatch(closeModal());
     }
   };
