@@ -1,5 +1,7 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { openAddModal } from "../redux/modal/action";
 
 import Button from "./Button";
 
@@ -24,10 +26,11 @@ const EmptyMessage = styled.p`
 `;
 
 const EmptyList = () => {
+  const dispatch = useDispatch();
   return (
     <EmptyWrapper>
       <EmptyMessage>Your shopping list is empty :(</EmptyMessage>
-      <Button>Add your first item</Button>
+      <Button onClick={() => dispatch(openAddModal())}>Add your first item</Button>
     </EmptyWrapper>
   );
 };

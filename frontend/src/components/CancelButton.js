@@ -1,5 +1,7 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { closeModal } from '../redux/modal/action';
 
 const Cancel = styled.button`
   margin: 0.5rem;
@@ -21,9 +23,10 @@ const Cancel = styled.button`
   }
 `;
 
-const CancelButton = ({ modal }) => {
-
+const CancelButton = () => {
+  const dispatch = useDispatch();
   const handleClick = (event) => {
+    dispatch(closeModal());
   };
 
   return <Cancel onClick={handleClick}>Cancel</Cancel>;

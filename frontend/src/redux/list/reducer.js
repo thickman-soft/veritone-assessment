@@ -1,4 +1,4 @@
-import { cloneDeep, last } from "lodash";
+import { cloneDeep } from "lodash";
 
 const INITIAL_STATE = {
   shoppingList: {},
@@ -14,8 +14,8 @@ const reducer = (state = INITIAL_STATE, action) => {
         lastId: state.lastId + 1,
         shoppingList: {
           ...state.shoppingList,
-          [lastId]: {
-            id: lastId,
+          [state.lastId]: {
+            id: state.lastId,
             ...action.payload,
           },
         },
@@ -50,6 +50,7 @@ const reducer = (state = INITIAL_STATE, action) => {
         },
       };
   }
+  return state;
 };
 
 export default reducer;

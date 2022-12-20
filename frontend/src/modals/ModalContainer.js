@@ -1,9 +1,10 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-import AddItemModal from './AddItemModal';
-import EditItemModal from './EditItemModal';
-import DeleteItemModal from './DeleteItemModal';
+import AddItemModal from "./AddItemModal";
+import EditItemModal from "./EditItemModal";
+import DeleteItemModal from "./DeleteItemModal";
+import { useSelector } from "react-redux";
 
 const ModalWrapper = styled.div`
   position: absolute;
@@ -19,12 +20,14 @@ const ModalWrapper = styled.div`
 `;
 
 const ModalContainer = () => {
-
+  const modalType = useSelector((state) => state.modal.modalType);
   return (
     <ModalWrapper>
-      <DeleteItemModal />
+      {modalType === "add" && <AddItemModal />}
+      {modalType === "edit" && <EditItemModal />}
+      {modalType === "delete" && <DeleteItemModal />}
     </ModalWrapper>
-  )
-}
+  );
+};
 
 export default ModalContainer;

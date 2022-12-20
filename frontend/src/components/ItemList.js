@@ -4,6 +4,8 @@ import styled from "styled-components";
 import ListItem from "./ListItem";
 import CrossedItem from "./CrossedItem";
 import Button from "./Button";
+import { useDispatch } from "react-redux";
+import { openAddModal } from "../redux/modal/action";
 
 const ListWrapper = styled.div`
   align-self: flex-start;
@@ -24,14 +26,15 @@ const ListTitle = styled.h4`
 `;
 
 const ItemList = ({ shoppingList }) => {
+  const dispatch = useDispatch();
   return (
     <ListWrapper>
       <ListHeader>
         <ListTitle>Your Items</ListTitle>
-        <Button>Add Item</Button>
+        <Button onClick={() => dispatch(openAddModal())}>Add Item</Button>
       </ListHeader>
-      {shoppingList.map((item, ind) => {
-        return <ListItem item={item} ind={ind} key={ind} />;
+      {Object.keys(shoppingList).map((id) => {
+        return <ListItem item={shoppingList[id]} key={id} />;
       })}
     </ListWrapper>
   );

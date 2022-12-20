@@ -3,6 +3,7 @@ import styled from "styled-components";
 import ListContainer from "./components/ListContainer";
 import Header from "./components/Header";
 import ModalContainer from "./modals/ModalContainer";
+import { useSelector } from "react-redux";
 
 const Container = styled.div`
   display: flex;
@@ -12,11 +13,12 @@ const Container = styled.div`
 `;
 
 function App() {
+  const isModalOpen = useSelector((state) => state.modal.isModalOpen);
   return (
     <Container>
       <Header />
       <ListContainer />
-      <ModalContainer />
+      {isModalOpen && <ModalContainer />}
     </Container>
   );
 }

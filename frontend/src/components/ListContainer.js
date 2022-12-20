@@ -5,6 +5,7 @@ import EmptyList from "./EmptyList";
 
 import itemList from "../mock";
 import ItemList from "./ItemList";
+import { useSelector } from "react-redux";
 
 const BodyContainer = styled.div`
   display: flex;
@@ -16,11 +17,13 @@ const BodyContainer = styled.div`
 `;
 
 const ListContainer = () => {
-  const [shoppingList, setShoppingList] = useState(itemList);
+  const shoppingList = useSelector(
+    (state) => state.list.shoppingList
+  );
 
   return (
     <BodyContainer>
-      {shoppingList.length === 0 ? (
+      {Object.keys(shoppingList).length === 0 ? (
         <EmptyList />
       ) : (
         <ItemList shoppingList={shoppingList} />

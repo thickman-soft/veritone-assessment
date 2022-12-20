@@ -8,6 +8,9 @@ import ItemName from './InputFields/ItemName';
 import ItemDesc from './InputFields/ItemDesc';
 import ItemNumber from './InputFields/ItemNumber';
 import ConfirmButtons from './ConfirmButtons';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../redux/list/action';
+import { closeModal } from '../redux/modal/action';
 
 const AddModal = styled.div`
   width: 30rem;
@@ -29,9 +32,23 @@ const FormWrapper = styled.form`
 `;
 
 const AddItemModal = () => {
+  const dispatch = useDispatch();
   const inputForm = useRef();
 
   const handleClick = (event) => {
+    event.preventDefault();
+    const name = inputForm.current[0].value;
+    const desc = inputForm.current[1].value;
+    const num = inputForm.current[2].value;
+
+    if (name.length < 1) {
+      alert('Please enter name of item');
+    } else if (num.length > 5) {
+      alert('Please enter quantity of items to add');
+    } else {
+      dispatch(addItem({ name, desc, num }));
+      dispatch(closeModal());
+    }
   };
 
   return (

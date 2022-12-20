@@ -19,7 +19,7 @@ const ItemWrapper = styled.div`
   transition: 200ms;
 
   &:hover {
-    border: 0.1rem solid var(--button-primary);
+    border: 0.1rem solid var(--checkbox-filled);
     transition: 200ms;
   }
 `;
@@ -50,18 +50,17 @@ const ItemDesc = styled.p`
   color: var(--item-desc);
 `;
 
-const ListItem = (props) => {
-  const { name, desc, isChecked, count } = props.item;
-  const ind = props.ind;
+const ListItem = ({item}) => {
+  const { name, desc, isPurchased, count } = item;
 
   return (
-    <ItemWrapper isChecked={isChecked}>
-      <Checkbox isChecked={isChecked} ind={ind} />
+    <ItemWrapper isChecked={isPurchased}>
+      <Checkbox isChecked={isPurchased} />
       <Textbox>
-        <ItemName isChecked={isChecked}>{name}</ItemName>
-        <ItemDesc isChecked={isChecked}>{desc}</ItemDesc>
+        <ItemName isChecked={isPurchased}>{name}</ItemName>
+        <ItemDesc isChecked={isPurchased}>{desc}</ItemDesc>
       </Textbox>
-      <Controls ele={{ name, desc, isChecked, count, ind }} ind={ind} />
+      <Controls ele={item} />
     </ItemWrapper>
   );
 };
