@@ -4,9 +4,12 @@ export const openAddModal = () => {
   };
 };
 
-export const openDeleteModal = () => {
+export const openDeleteModal = (id) => {
   return {
     type: "@modal/OPEN_DELETE_MODAL",
+    payload: {
+      id
+    }
   };
 };
 

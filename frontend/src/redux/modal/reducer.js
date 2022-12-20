@@ -23,6 +23,10 @@ const reducer = (state = INITIAL_STATE, action) => {
         ...state,
         isModalOpen: true,
         modalType: "delete",
+        curItem: {
+          ...state.curItem,
+          id: action.payload.id,
+        },
       };
     case "@modal/OPEN_EDIT_MODAL":
       return {

@@ -4,6 +4,9 @@ import styled from 'styled-components';
 import Title from './ModalText/Title';
 import Subtitle from './ModalText/Subtitle';
 import ConfirmButtons from './ConfirmButtons';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeItem } from '../redux/list/action';
+import { closeModal } from '../redux/modal/action';
 
 const DeleteModal = styled.div`
   width: 25rem;
@@ -21,7 +24,11 @@ const TextWrapper = styled.div`
 `;
 
 const DeleteItemModal = () => {
+  const dispatch = useDispatch();
+  const id = useSelector(state => state.modal.curItem.id);
   const handleClick = () => {
+    dispatch(removeItem(id));
+    dispatch(closeModal());
   };
 
   return (
