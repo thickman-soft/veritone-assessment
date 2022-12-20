@@ -21,7 +21,7 @@ const TextWrapper = styled.div`
 `;
 
 const DeleteItemModal = () => {
-  const clickFunc = () => {
+  const handleClick = () => {
   };
 
   return (
@@ -30,7 +30,7 @@ const DeleteItemModal = () => {
         <Title text='Delete Item?' />
         <Subtitle text='Are you sure you want to delete this item? This can not be undone.' />
       </TextWrapper>
-      <ConfirmButtons modal={'del'} handleClick={clickFunc} buttonText={'Delete'} />
+      <ConfirmButtons modal={'del'} handleClick={handleClick} buttonText={'Delete'} />
     </DeleteModal>
   );
 };

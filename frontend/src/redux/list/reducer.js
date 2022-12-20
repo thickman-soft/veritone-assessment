@@ -24,7 +24,7 @@ const reducer = (state = INITIAL_STATE, action) => {
       };
     case "@list/REMOVE_ITEM":
       const newShoppingList = cloneDeep(state.shoppingList);
-      action.payload.ids.forEach((id) => delete newShoppingList[id]);
+      delete newShoppingList[action.payload.id];
       return {
         ...state,
         shoppingList: newShoppingList,

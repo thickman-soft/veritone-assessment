@@ -63,7 +63,7 @@ const ListItem = ({ item }) => {
         <ItemName isChecked={isPurchased}>{name}</ItemName>
         <ItemDesc isChecked={isPurchased}>{desc}</ItemDesc>
       </Textbox>
-      <Controls ele={item} />
+      <Controls item={item} />
     </ItemWrapper>
   );
 };

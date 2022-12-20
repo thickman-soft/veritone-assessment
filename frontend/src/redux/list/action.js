@@ -5,10 +5,10 @@ export const addItem = (name, desc, num) => {
   };
 };
 
-export const removeItem = (ids) => {
+export const removeItem = (id) => {
   return {
     type: "@list/REMOVE_ITEM",
-    payload: { ids },
+    payload: { id },
   };
 };
 

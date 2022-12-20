@@ -1,5 +1,7 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { removeItem } from '../redux/list/action';
 
 const ControlIcons = styled.div`
   flex: 0 1 15%;
@@ -22,13 +24,17 @@ const ControlIcons = styled.div`
   }
 `;
 
-const Controls = ({ ele }) => {
+const Controls = ({ item }) => {
+  const dispatch = useDispatch();
+  const deleteItem = (event) => {
+    dispatch(removeItem(item.id));
+  }
   return (
     <ControlIcons>
       <i className='material-icons'>
         edit
       </i>
-      <i className='material-icons'>
+      <i className='material-icons' onClick={deleteItem}>
         delete
       </i>
     </ControlIcons>
