@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import Button from "./Button";
 
-const EmptyContainer = styled.div`
+const EmptyWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,10 +25,10 @@ const EmptyMessage = styled.p`
 
 const EmptyList = () => {
   return (
-    <EmptyContainer>
+    <EmptyWrapper>
       <EmptyMessage>Your shopping list is empty :(</EmptyMessage>
       <Button>Add your first item</Button>
-    </EmptyContainer>
+    </EmptyWrapper>
   );
 };
 
