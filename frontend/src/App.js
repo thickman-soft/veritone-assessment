@@ -3,9 +3,8 @@ import styled from "styled-components";
 import ListContainer from "./components/ListContainer";
 import Header from "./components/Header";
 import ModalContainer from "./modals/ModalContainer";
-import { useSelector } from "react-redux";
-
-import { addItem, editItem, fetchAllItems } from "./api";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllItems } from "./redux/list/action";
 
 const Container = styled.div`
   display: flex;
@@ -15,9 +14,11 @@ const Container = styled.div`
 `;
 
 function App() {
+  const dispatch = useDispatch();
   const isModalOpen = useSelector((state) => state.modal.isModalOpen);
 
   useEffect(() => {
+    dispatch(fetchAllItems());
   }, [])
   return (
     <Container>

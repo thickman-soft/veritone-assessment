@@ -8,20 +8,33 @@ const INITIAL_STATE = {
 
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case "@list/ADD_ITEM":
+    case "@list/SET_ITEMS":
+      console.log(action.payload);
+      return {
+        ...state,
+        shoppingList: action.payload.items.reduce((acc, cur) => {
+          return {
+            ...acc,
+            [cur.id]: {
+              ...cur,
+              isPurchased: cur.is_purchased,
+            },
+          };
+        }, {}),
+      };
+    case "@list/INSERT_ITEM":
       return {
         ...state,
         lastId: state.lastId + 1,
         shoppingList: {
           ...state.shoppingList,
-          [state.lastId]: {
-            id: state.lastId,
+          [action.payload.id]: {
             ...action.payload,
             isPurchased: false,
           },
         },
       };
-    case "@list/REMOVE_ITEM":
+    case "@list/REMOVE_ONE_ITEM":
       const newShoppingList = cloneDeep(state.shoppingList);
       delete newShoppingList[action.payload.id];
       return {

@@ -1,3 +1,18 @@
+export const fetchAllItems = () => {
+  return {
+    type: "@list/FETCH_ALL_ITEMS",
+  };
+};
+
+export const setItems = (items) => {
+  return {
+    type: "@list/SET_ITEMS",
+    payload: {
+      items
+    }
+  }
+}
+
 export const addItem = (name, desc, num) => {
   return {
     type: "@list/ADD_ITEM",
@@ -5,9 +20,23 @@ export const addItem = (name, desc, num) => {
   };
 };
 
+export const insertItem = (id, name, desc, num) => {
+  return {
+    type: "@list/INSERT_ITEM",
+    payload: { id, name, desc, num },
+  };
+};
+
 export const removeItem = (id) => {
   return {
     type: "@list/REMOVE_ITEM",
+    payload: { id },
+  };
+};
+
+export const removeOneItem = (id) => {
+  return {
+    type: "@list/REMOVE_ONE_ITEM",
     payload: { id },
   };
 };

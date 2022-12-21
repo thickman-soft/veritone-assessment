@@ -4,6 +4,7 @@ const baseURL = "http://localhost:8080";
 
 export const fetchAllItems = async () => {
   const result = await axios.get(`${baseURL}/shopping/list`);
+  console.log("Hello", result);
   return result.data || [];
 };
 
@@ -17,7 +18,7 @@ export const addItem = async (name, desc, num) => {
 };
 
 export const deleteItem = async (id) => {
-  const result = await axios.delete(`${baseURL}/shopping/list`, {
+  const result = await axios.delete(`${baseURL}/shopping/list?id=${id}`, {
     id,
   });
   return result.data;
