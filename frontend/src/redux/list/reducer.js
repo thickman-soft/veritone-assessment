@@ -9,7 +9,6 @@ const INITIAL_STATE = {
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case "@list/SET_ITEMS":
-      console.log(action.payload);
       return {
         ...state,
         shoppingList: action.payload.items.reduce((acc, cur) => {
@@ -41,7 +40,7 @@ const reducer = (state = INITIAL_STATE, action) => {
         ...state,
         shoppingList: newShoppingList,
       };
-    case "@list/CROSS_ITEM":
+    case "@list/CROSS_ONE_ITEM":
       return {
         ...state,
         shoppingList: {
@@ -52,8 +51,7 @@ const reducer = (state = INITIAL_STATE, action) => {
           },
         },
       };
-    case "@list/UPDATE_ITEM":
-      console.log(action.payload.item);
+    case "@list/UPDATE_ONE_ITEM":
       return {
         ...state,
         shoppingList: {

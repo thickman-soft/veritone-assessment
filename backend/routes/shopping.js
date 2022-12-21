@@ -6,7 +6,7 @@ const router = express.Router();
 router.get("/list", (req, res) => {
   db.all("SELECT * FROM shopping_items", function (err, result) {
     if (err) {
-      res.json(err)
+      res.json(err);
     }
     res.json(result);
   });
@@ -74,7 +74,7 @@ router.put("/list", (req, res) => {
       } else {
         db.run(
           "UPDATE shopping_items SET name = ?, desc = ?, num = ?, is_purchased = ? WHERE id = ?",
-          [name, desc, num, isPurchased === "true" ? true : false, id],
+          [name, desc, num, isPurchased, id],
           function (err) {
             if (err) {
               res.json({

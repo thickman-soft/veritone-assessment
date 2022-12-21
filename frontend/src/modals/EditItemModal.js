@@ -54,8 +54,6 @@ const EditItemModal = () => {
   const curItem = useSelector((state) => state.modal.curItem);
   const inputForm = useRef();
 
-  console.log(curItem);
-
   const updateItemHandler = (event) => {
     event.preventDefault();
 

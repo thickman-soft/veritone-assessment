@@ -21,8 +21,6 @@ const ListContainer = () => {
     (state) => state.list.shoppingList
   );
 
-  console.log(shoppingList);
-
   return (
     <BodyContainer>
       {Object.keys(shoppingList).length === 0 ? (

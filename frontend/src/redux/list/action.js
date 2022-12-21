@@ -8,10 +8,10 @@ export const setItems = (items) => {
   return {
     type: "@list/SET_ITEMS",
     payload: {
-      items
-    }
-  }
-}
+      items,
+    },
+  };
+};
 
 export const addItem = (name, desc, num) => {
   return {
@@ -48,9 +48,23 @@ export const crossItem = (id) => {
   };
 };
 
+export const crossOneItem = (id) => {
+  return {
+    type: "@list/CROSS_ONE_ITEM",
+    payload: { id },
+  };
+};
+
 export const updateItem = (id, item) => {
   return {
     type: "@list/UPDATE_ITEM",
+    payload: { id, item },
+  };
+};
+
+export const updateOneItem = (id, item) => {
+  return {
+    type: "@list/UPDATE_ONE_ITEM",
     payload: { id, item },
   };
 };
