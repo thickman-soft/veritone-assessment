@@ -3,6 +3,15 @@ const db = require("../db");
 
 const router = express.Router();
 
+router.get("/list", (req, res) => {
+  db.all("SELECT * FROM shopping_items", function (err, result) {
+    if (err) {
+      res.json(err)
+    }
+    res.json(result);
+  });
+});
+
 router.post("/list", (req, res) => {
   const { name, desc, num } = req.body;
   let insert =
