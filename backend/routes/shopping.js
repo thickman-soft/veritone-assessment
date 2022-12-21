@@ -84,4 +84,37 @@ router.put("/list", (req, res) => {
   );
 });
 
+router.get("/toggle", (req, res) => {
+  const { id } = req.query;
+  db.get(
+    "SELECT * FROM shopping_items WHERE id = ?",
+    [id],
+    function (err, result) {
+      if (err || !result) {
+        res.json({
+          success: false,
+          msg: "can not find the item",
+        });
+      } else {
+        db.run(
+          "UPDATE shopping_items SET is_purchased = ? WHERE id = ?",
+          [!result.is_purchased, id],
+          function (err) {
+            if (err) {
+              res.json({
+                success: false,
+                msg: "can not update the item",
+              });
+            } else {
+              res.json({
+                success: true,
+              });
+            }
+          }
+        );
+      }
+    }
+  );
+});
+
 module.exports = router;
