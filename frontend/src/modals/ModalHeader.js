@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-import ExitModal from './ExitModal';
+import ExitModal from "./ExitModal";
 
 const ModalHeaderWrapper = styled.div`
   width: 100%;
@@ -13,17 +13,17 @@ const ModalHeaderWrapper = styled.div`
 `;
 
 const ModalTitle = styled.div`
-  font-family: 'Dosis', sans-serif;
+  font-family: "Dosis", sans-serif;
   font-weight: 500;
   font-size: 1.2rem;
   padding: 0rem 1.5rem;
 `;
 
-const ModalHeader = ({ modal }) => {
+const ModalHeader = () => {
   return (
     <ModalHeaderWrapper>
       <ModalTitle>SHOPPING LIST</ModalTitle>
-      <ExitModal modal={modal} />
+      <ExitModal />
     </ModalHeaderWrapper>
   );
 };

@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
 
 import ModalHeader from "./ModalHeader";
 import Title from "./ModalText/Title";
@@ -8,7 +9,7 @@ import ItemName from "./InputFields/ItemName";
 import ItemDesc from "./InputFields/ItemDesc";
 import ItemNumber from "./InputFields/ItemNumber";
 import ConfirmButtons from "./ConfirmButtons";
-import { useDispatch } from "react-redux";
+
 import { addItem } from "../redux/list/action";
 import { closeModal } from "../redux/modal/action";
 
@@ -53,7 +54,7 @@ const AddItemModal = () => {
 
   return (
     <AddModal>
-      <ModalHeader modal={"add"} />
+      <ModalHeader />
       <BodyWrapper>
         <Title text={"Add an Item"} />
         <Subtitle text={"Add your new item below"} />

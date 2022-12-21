@@ -1,11 +1,11 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 
+import ItemList from "./ItemList";
 import EmptyList from "./EmptyList";
 
-import itemList from "../mock";
-import ItemList from "./ItemList";
-import { useSelector } from "react-redux";
+import { getShoppingList } from "../redux/selector";
 
 const BodyContainer = styled.div`
   display: flex;
@@ -17,9 +17,7 @@ const BodyContainer = styled.div`
 `;
 
 const ListContainer = () => {
-  const shoppingList = useSelector(
-    (state) => state.list.shoppingList
-  );
+  const shoppingList = useSelector(getShoppingList);
 
   return (
     <BodyContainer>

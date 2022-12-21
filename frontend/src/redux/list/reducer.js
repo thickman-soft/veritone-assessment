@@ -2,12 +2,16 @@ import { cloneDeep } from "lodash";
 
 const INITIAL_STATE = {
   shoppingList: {},
-  lastId: 0,
   isWaiting: false,
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case "@list/SET_IS_WAITING":
+      return {
+        ...state,
+        isWaiting: action.payload.isWaiting,
+      };
     case "@list/SET_ITEMS":
       return {
         ...state,
@@ -24,7 +28,6 @@ const reducer = (state = INITIAL_STATE, action) => {
     case "@list/INSERT_ITEM":
       return {
         ...state,
-        lastId: state.lastId + 1,
         shoppingList: {
           ...state.shoppingList,
           [action.payload.id]: {

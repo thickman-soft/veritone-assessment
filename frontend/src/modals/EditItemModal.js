@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 
 import ModalHeader from "./ModalHeader";
@@ -8,9 +9,10 @@ import ItemName from "./InputFields/ItemName";
 import ItemDesc from "./InputFields/ItemDesc";
 import ItemNumber from "./InputFields/ItemNumber";
 import ConfirmButtons from "./ConfirmButtons";
-import { useDispatch, useSelector } from "react-redux";
+
 import { updateItem } from "../redux/list/action";
 import { closeModal } from "../redux/modal/action";
+import { getModalCurrentItem } from "../redux/selector";
 
 const EditModal = styled.div`
   width: 30rem;
@@ -51,7 +53,7 @@ const PurchasedText = styled.label`
 
 const EditItemModal = () => {
   const dispatch = useDispatch();
-  const curItem = useSelector((state) => state.modal.curItem);
+  const curItem = useSelector(getModalCurrentItem);
   const inputForm = useRef();
 
   const updateItemHandler = (event) => {
@@ -76,7 +78,7 @@ const EditItemModal = () => {
 
   return (
     <EditModal>
-      <ModalHeader modal={"edit"} />
+      <ModalHeader />
       <BodyWrapper>
         <Title text={"Edit an Item"} />
         <Subtitle text={"Edit your item below"} />

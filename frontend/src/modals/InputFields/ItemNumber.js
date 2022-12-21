@@ -1,23 +1,17 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const Dropdown = styled.select`
   margin: 0rem 1.5rem;
   padding: 1rem;
   border-radius: 0.2rem;
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
   width: 87.5%;
   border: 0.1rem solid var(--modal-inputs);
   color: var(--modal-placeholders);
 `;
 
-const options = [];
 const numOptions = 5;
-let count = 0;
-
-while (count < numOptions) {
-  options.push(<option key={++count}>{count}</option>);
-}
 
 const ItemNumber = ({ placeholder, text }) => {
   return placeholder ? (
@@ -25,10 +19,16 @@ const ItemNumber = ({ placeholder, text }) => {
       <option disabled hidden>
         {placeholder}
       </option>
-      {options}
+      {new Array(numOptions).fill(0).map((cur, ind) => (
+        <option key={ind}>{ind}</option>
+      ))}
     </Dropdown>
   ) : (
-    <Dropdown defaultValue={text}>{options}</Dropdown>
+    <Dropdown defaultValue={text}>
+      {new Array(numOptions).fill(0).map((cur, ind) => (
+        <option key={ind}>{ind}</option>
+      ))}
+    </Dropdown>
   );
 };
 

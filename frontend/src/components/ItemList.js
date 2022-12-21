@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-
-import ListItem from "./ListItem";
-import CrossedItem from "./CrossedItem";
-import Button from "./Button";
 import { useDispatch } from "react-redux";
+
+import Button from "./Button";
+import ListItem from "./ListItem";
+
 import { openAddModal } from "../redux/modal/action";
 
 const ListWrapper = styled.div`

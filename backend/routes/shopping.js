@@ -4,12 +4,14 @@ const db = require("../db");
 const router = express.Router();
 
 router.get("/list", (req, res) => {
-  db.all("SELECT * FROM shopping_items", function (err, result) {
-    if (err) {
-      res.json(err);
-    }
-    res.json(result);
-  });
+  setTimeout(() => {
+    db.all("SELECT * FROM shopping_items", function (err, result) {
+      if (err) {
+        res.json(err);
+      }
+      res.json(result);
+    });
+  }, 500);
 });
 
 router.post("/list", (req, res) => {

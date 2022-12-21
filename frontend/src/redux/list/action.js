@@ -68,3 +68,10 @@ export const updateOneItem = (id, item) => {
     payload: { id, item },
   };
 };
+
+export const setIsWaiting = (isWaiting) => {
+  return {
+    type: "@list/SET_IS_WAITING",
+    payload: { isWaiting },
+  };
+};

@@ -1,7 +1,10 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
-const Icon = styled.span`
+import { closeModal } from '../redux/modal/action';
+
+const Icon = styled.i`
   padding: 0rem 1.5rem;
   color: var(--control-icons);
   cursor: pointer;
@@ -18,12 +21,15 @@ const Icon = styled.span`
   }
 `;
 
-const ExitModal = ({ modal }) => {
+const ExitModal = () => {
+  const dispatch = useDispatch();
+
   const handleClick = () => {
-    
+    dispatch(closeModal());
   }
+
   return (
-    <Icon className='material-icons-outlined' onClick={handleClick}>
+    <Icon className='material-icons' onClick={handleClick}>
       last_page
     </Icon>
   );

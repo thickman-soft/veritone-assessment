@@ -1,7 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { crossItem } from "../redux/list/action";
 
 import Checkbox from "./Checkbox";
 import Controls from "./Controls";
@@ -53,7 +51,6 @@ const ItemDesc = styled.p`
 `;
 
 const ListItem = ({ item }) => {
-  const dispatch = useDispatch();
   const { id, name, desc, isPurchased } = item;
 
   return (

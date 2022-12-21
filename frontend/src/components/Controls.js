@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+
 import { openDeleteModal, openEditModal } from '../redux/modal/action';
 
 const ControlIcons = styled.div`
