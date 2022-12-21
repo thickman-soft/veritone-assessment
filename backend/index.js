@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const bodyParser = require("body-parser");
 const shopping = require("./routes/shopping");
 
@@ -11,11 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use("/aaa", (req, res) => {
-  res.json({
-    aaa: "success",
-  });
-});
+app.use(cors());
 
 app.use("/shopping", shopping);
 
