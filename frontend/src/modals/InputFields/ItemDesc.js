@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const InputDesc = styled.textarea`
+const ItemDesc = styled.textarea`
   margin: 1rem 1.5rem;
   padding: 1rem;
   border-radius: 0.2rem;
@@ -15,13 +15,5 @@ const InputDesc = styled.textarea`
     color: var(--modal-placeholders);
   }
 `;
-
-const ItemDesc = ({ placeholder, text }) => {
-  return placeholder ? (
-    <InputDesc placeholder={placeholder} />
-  ) : (
-    <InputDesc defaultValue={text} />
-  );
-};
 
 export default ItemDesc;

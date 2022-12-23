@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const NameInput = styled.input`
+const ItemName = styled.input`
   margin-left: 1.5rem;
   padding: 1rem;
   border-radius: 0.2rem;
@@ -13,13 +13,5 @@ const NameInput = styled.input`
     color: var(--modal-placeholders);
   }
 `;
-
-const ItemName = ({ placeholder, text }) => {
-  return placeholder ? (
-    <NameInput placeholder={placeholder} />
-  ) : (
-    <NameInput defaultValue={text} />
-  );
-};
 
 export default ItemName;

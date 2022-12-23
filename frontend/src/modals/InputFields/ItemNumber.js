@@ -12,23 +12,17 @@ const Dropdown = styled.select`
   color: var(--modal-placeholders);
 `;
 
-const ItemNumber = ({ placeholder, text }) => {
-  return placeholder ? (
-    <Dropdown defaultValue={placeholder}>
-      <option disabled hidden>
-        {placeholder}
+const ItemNumber = (props) => (
+  <Dropdown {...props}>
+    {props.placeholder && (
+      <option value="" disabled selected>
+        {props.placeholder}
       </option>
-      {new Array(NUM_OPTIONS).fill(0).map((_, ind) => (
-        <option key={ind}>{ind}</option>
-      ))}
-    </Dropdown>
-  ) : (
-    <Dropdown defaultValue={text}>
-      {new Array(NUM_OPTIONS).fill(0).map((_, ind) => (
-        <option key={ind}>{ind}</option>
-      ))}
-    </Dropdown>
-  );
-};
+    )}
+    {new Array(NUM_OPTIONS).fill(0).map((_, ind) => (
+      <option key={ind + 1}>{ind + 1}</option>
+    ))}
+  </Dropdown>
+);
 
 export default ItemNumber;

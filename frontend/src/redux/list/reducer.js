@@ -6,7 +6,7 @@ const INITIAL_STATE = {
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
-  const { id } = action.payload;
+  const { id } = action.payload || {};
   switch (action.type) {
     case "@list/SET_IS_WAITING":
       const { isWaiting } = action.payload;

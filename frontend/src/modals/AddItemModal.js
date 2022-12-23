@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 
@@ -34,22 +34,32 @@ const FormWrapper = styled.form`
 
 const AddItemModal = () => {
   const dispatch = useDispatch();
-  const inputForm = useRef();
+  const [inputData, setInputData] = useState({
+    name: null,
+    desc: null,
+    num: null,
+  });
 
   const handleClick = (event) => {
     event.preventDefault();
-    const name = inputForm.current[0].value;
-    const desc = inputForm.current[1].value;
-    const num = inputForm.current[2].value;
+    const name = inputData["name"] || "";
+    const desc = inputData["desc"] || "";
+    const num = inputData["num"] || 0;
 
     if (name.length < 1) {
       alert("Please enter name of item");
-    } else if (num.length > 5) {
+    } else if (num === 0) {
       alert("Please enter quantity of items to add");
     } else {
       dispatch(addItem(name, desc, num));
       dispatch(closeModal());
     }
+  };
+
+  const valueChangeHandler = (event) => {
+    const type = event.target.name;
+    const value = event.target.value;
+    setInputData({ ...inputData, [type]: value });
   };
 
   return (
@@ -58,10 +68,25 @@ const AddItemModal = () => {
       <BodyWrapper>
         <Title>Add an Item</Title>
         <Subtitle>Add your new item below</Subtitle>
-        <FormWrapper ref={inputForm}>
-          <ItemName placeholder="Item Name" />
-          <ItemDesc placeholder="Description" />
-          <ItemNumber placeholder="How many?" />
+        <FormWrapper>
+          <ItemName
+            name="name"
+            placeholder="Item Name"
+            value={inputData["name"]}
+            onChange={valueChangeHandler}
+          />
+          <ItemDesc
+            name="desc"
+            placeholder="Description"
+            value={inputData["desc"]}
+            onChange={valueChangeHandler}
+          />
+          <ItemNumber
+            name="num"
+            placeholder="How many?"
+            value={inputData["num"]}
+            onChange={valueChangeHandler}
+          />
         </FormWrapper>
       </BodyWrapper>
       <ConfirmButtons handleClick={handleClick} buttonText="Add Item" />

@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 
@@ -33,7 +33,7 @@ const FormWrapper = styled.form`
   height: 100%;
 `;
 
-const SubmittedBox = styled.input`
+const PurchaseCheckBox = styled.input`
   margin: 1.5rem 1.5rem;
   height: 1.2rem;
   width: 1.2rem;
@@ -52,17 +52,29 @@ const PurchasedText = styled.label`
 `;
 
 const EditItemModal = () => {
+  const [inputData, setInputData] = useState({
+    name: "",
+    desc: "",
+    num: 0,
+    isPurchased: false,
+  });
   const dispatch = useDispatch();
   const curItem = useSelector(getModalCurrentItem);
   const inputForm = useRef();
 
+  useEffect(() => {
+    setInputData({
+      name: curItem.name,
+      desc: curItem.desc,
+      num: curItem.num,
+      isPurchased: curItem.isPurchased,
+    });
+  }, [curItem]);
+
   const updateItemHandler = (event) => {
     event.preventDefault();
 
-    const name = inputForm.current[0].value;
-    const desc = inputForm.current[1].value;
-    const num = parseInt(inputForm.current[2].value);
-    const isPurchased = inputForm.current[3].checked;
+    const { name, desc, num, isPurchased } = inputData;
 
     if (name.length < 1) {
       alert("Please enter name of item");
@@ -76,6 +88,16 @@ const EditItemModal = () => {
     }
   };
 
+  const valueChangeHandler = (event) => {
+    const type = event.target.name;
+    const value = event.target.value;
+    setInputData({ ...inputData, [type]: value });
+  };
+
+  const togglePurchased = () => {
+    setInputData({ ...inputData, isPurchased: !inputData.isPurchased });
+  };
+
   return (
     <EditModal>
       <ModalHeader />
@@ -83,20 +105,35 @@ const EditItemModal = () => {
         <Title>Edit an Item</Title>
         <Subtitle>Edit your item below</Subtitle>
         <FormWrapper ref={inputForm}>
-          <ItemName text={curItem.name} />
-          <ItemDesc text={curItem.desc} />
-          <ItemNumber text={curItem.num} />
+          <ItemName
+            name="name"
+            placeholder="Item Name"
+            value={inputData["name"]}
+            onChange={valueChangeHandler}
+          />
+          <ItemDesc
+            name="desc"
+            placeholder="Description"
+            value={inputData["desc"]}
+            onChange={valueChangeHandler}
+          />
+          <ItemNumber
+            name="num"
+            placeholder="How many?"
+            value={inputData["num"]}
+            onChange={valueChangeHandler}
+          />
           <TextWrapper>
-            <SubmittedBox
+            <PurchaseCheckBox
               type="checkbox"
-              defaultChecked={curItem.isPurchased}
+              checked={inputData["isPurchased"]}
+              onClick={togglePurchased}
             />
             <PurchasedText>Purchased</PurchasedText>
           </TextWrapper>
         </FormWrapper>
       </BodyWrapper>
       <ConfirmButtons
-        modal={"edit"}
         handleClick={updateItemHandler}
         buttonText={"Save Item"}
       />

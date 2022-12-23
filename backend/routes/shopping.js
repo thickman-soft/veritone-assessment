@@ -18,7 +18,7 @@ router.post("/list", (req, res) => {
   const { name, desc, num } = req.body;
   let insert =
     "INSERT INTO shopping_items (name, desc, num, is_purchased) VALUES (?,?,?,?)";
-  db.run(insert, [name, desc, num, false], (err) => {
+  db.run(insert, [name, desc, num, false], function(err) {
     if (err) {
       res.json({
         success: false,
