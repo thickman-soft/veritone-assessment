@@ -80,8 +80,8 @@ const EditItemModal = () => {
     <EditModal>
       <ModalHeader />
       <BodyWrapper>
-        <Title text={"Edit an Item"} />
-        <Subtitle text={"Edit your item below"} />
+        <Title>Edit an Item</Title>
+        <Subtitle>Edit your item below</Subtitle>
         <FormWrapper ref={inputForm}>
           <ItemName text={curItem.name} />
           <ItemDesc text={curItem.desc} />

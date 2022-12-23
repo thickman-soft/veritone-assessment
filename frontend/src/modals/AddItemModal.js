@@ -56,19 +56,15 @@ const AddItemModal = () => {
     <AddModal>
       <ModalHeader />
       <BodyWrapper>
-        <Title text={"Add an Item"} />
-        <Subtitle text={"Add your new item below"} />
+        <Title>Add an Item</Title>
+        <Subtitle>Add your new item below</Subtitle>
         <FormWrapper ref={inputForm}>
-          <ItemName placeholder={"Item Name"} />
-          <ItemDesc placeholder={"Description"} />
-          <ItemNumber placeholder={"How many?"} />
+          <ItemName placeholder="Item Name" />
+          <ItemDesc placeholder="Description" />
+          <ItemNumber placeholder="How many?" />
         </FormWrapper>
       </BodyWrapper>
-      <ConfirmButtons
-        modal={"add"}
-        handleClick={handleClick}
-        buttonText={"Add Item"}
-      />
+      <ConfirmButtons handleClick={handleClick} buttonText="Add Item" />
     </AddModal>
   );
 };

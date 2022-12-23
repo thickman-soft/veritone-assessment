@@ -6,16 +6,19 @@ const INITIAL_STATE = {
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
+  const { id } = action.payload;
   switch (action.type) {
     case "@list/SET_IS_WAITING":
+      const { isWaiting } = action.payload;
       return {
         ...state,
-        isWaiting: action.payload.isWaiting,
+        isWaiting: isWaiting,
       };
     case "@list/SET_ITEMS":
+      const { items } = action.payload;
       return {
         ...state,
-        shoppingList: action.payload.items.reduce((acc, cur) => {
+        shoppingList: items.reduce((acc, cur) => {
           return {
             ...acc,
             [cur.id]: {
@@ -30,7 +33,7 @@ const reducer = (state = INITIAL_STATE, action) => {
         ...state,
         shoppingList: {
           ...state.shoppingList,
-          [action.payload.id]: {
+          [id]: {
             ...action.payload,
             isPurchased: false,
           },
@@ -38,7 +41,7 @@ const reducer = (state = INITIAL_STATE, action) => {
       };
     case "@list/REMOVE_ONE_ITEM":
       const newShoppingList = cloneDeep(state.shoppingList);
-      delete newShoppingList[action.payload.id];
+      delete newShoppingList[id];
       return {
         ...state,
         shoppingList: newShoppingList,
@@ -48,9 +51,9 @@ const reducer = (state = INITIAL_STATE, action) => {
         ...state,
         shoppingList: {
           ...state.shoppingList,
-          [action.payload.id]: {
-            ...state.shoppingList[action.payload.id],
-            isPurchased: !state.shoppingList[action.payload.id].isPurchased,
+          [id]: {
+            ...state.shoppingList[id],
+            isPurchased: !state.shoppingList[id].isPurchased,
           },
         },
       };
@@ -59,9 +62,9 @@ const reducer = (state = INITIAL_STATE, action) => {
         ...state,
         shoppingList: {
           ...state.shoppingList,
-          [action.payload.id]: {
+          [id]: {
             ...action.payload.item,
-            id: action.payload.id,
+            id,
           },
         },
       };

@@ -21,7 +21,7 @@ const ListContainer = () => {
 
   return (
     <BodyContainer>
-      {Object.keys(shoppingList).length === 0 ? (
+      {!Object.keys(shoppingList).length ? (
         <EmptyList />
       ) : (
         <ItemList shoppingList={shoppingList} />

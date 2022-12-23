@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { NUM_OPTIONS } from "../../fixtures";
 
 const Dropdown = styled.select`
   margin: 0rem 1.5rem;
@@ -11,21 +12,19 @@ const Dropdown = styled.select`
   color: var(--modal-placeholders);
 `;
 
-const numOptions = 5;
-
 const ItemNumber = ({ placeholder, text }) => {
   return placeholder ? (
     <Dropdown defaultValue={placeholder}>
       <option disabled hidden>
         {placeholder}
       </option>
-      {new Array(numOptions).fill(0).map((cur, ind) => (
+      {new Array(NUM_OPTIONS).fill(0).map((_, ind) => (
         <option key={ind}>{ind}</option>
       ))}
     </Dropdown>
   ) : (
     <Dropdown defaultValue={text}>
-      {new Array(numOptions).fill(0).map((cur, ind) => (
+      {new Array(NUM_OPTIONS).fill(0).map((_, ind) => (
         <option key={ind}>{ind}</option>
       ))}
     </Dropdown>

@@ -31,7 +31,9 @@ const EmptyList = () => {
   return (
     <EmptyWrapper>
       <EmptyMessage>Your shopping list is empty :(</EmptyMessage>
-      <Button onClick={() => dispatch(openAddModal())}>Add your first item</Button>
+      <Button onClick={() => dispatch(openAddModal())}>
+        Add your first item
+      </Button>
     </EmptyWrapper>
   );
 };

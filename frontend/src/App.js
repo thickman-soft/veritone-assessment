@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
+import styled from "styled-components";
 
 import { fetchAllItems } from "./redux/list/action";
 import { getIsModalOpen, getIsWaiting } from "./redux/selector";
@@ -30,7 +30,7 @@ function App() {
     <Container>
       <Header />
       <ListContainer />
-      {(isModalOpen) && <ModalContainer />}
+      {isModalOpen && <ModalContainer />}
       {isWaiting && <SpinnerContainer />}
     </Container>
   );

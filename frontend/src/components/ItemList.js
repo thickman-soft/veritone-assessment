@@ -20,6 +20,7 @@ const ListHeader = styled.div`
   height: 3rem;
   margin-bottom: -1rem;
 `;
+
 const ListTitle = styled.h4`
   font-family: "Nunito", sans-serif;
   font-size: 1.2rem;

@@ -1,14 +1,14 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import styled from 'styled-components';
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import styled from "styled-components";
 
-import Title from './ModalText/Title';
-import Subtitle from './ModalText/Subtitle';
-import ConfirmButtons from './ConfirmButtons';
+import Title from "./ModalText/Title";
+import Subtitle from "./ModalText/Subtitle";
+import ConfirmButtons from "./ConfirmButtons";
 
-import { removeItem } from '../redux/list/action';
-import { closeModal } from '../redux/modal/action';
-import { getModalCurrentItem } from '../redux/selector';
+import { removeItem } from "../redux/list/action";
+import { closeModal } from "../redux/modal/action";
+import { getModalCurrentItem } from "../redux/selector";
 
 const DeleteModal = styled.div`
   width: 25rem;
@@ -27,7 +27,7 @@ const TextWrapper = styled.div`
 
 const DeleteItemModal = () => {
   const dispatch = useDispatch();
-  const {id} = useSelector(getModalCurrentItem);
+  const { id } = useSelector(getModalCurrentItem);
   const handleClick = () => {
     dispatch(removeItem(id));
     dispatch(closeModal());
@@ -36,10 +36,12 @@ const DeleteItemModal = () => {
   return (
     <DeleteModal>
       <TextWrapper>
-        <Title text='Delete Item?' />
-        <Subtitle text='Are you sure you want to delete this item? This can not be undone.' />
+        <Title>Delete Item?</Title>
+        <Subtitle>
+          Are you sure you want to delete this item? This can not be undone.
+        </Subtitle>
       </TextWrapper>
-      <ConfirmButtons modal={'del'} handleClick={handleClick} buttonText={'Delete'} />
+      <ConfirmButtons handleClick={handleClick} buttonText="Delete" />
     </DeleteModal>
   );
 };

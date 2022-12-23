@@ -1,8 +1,8 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import styled from 'styled-components';
+import React from "react";
+import { useDispatch } from "react-redux";
+import styled from "styled-components";
 
-import { closeModal } from '../redux/modal/action';
+import { closeModal } from "../redux/modal/action";
 
 const Icon = styled.i`
   padding: 0rem 1.5rem;
@@ -26,10 +26,10 @@ const ExitModal = () => {
 
   const handleClick = () => {
     dispatch(closeModal());
-  }
+  };
 
   return (
-    <Icon className='material-icons' onClick={handleClick}>
+    <Icon className="material-icons" onClick={handleClick}>
       last_page
     </Icon>
   );

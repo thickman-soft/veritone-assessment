@@ -20,10 +20,11 @@ const CheckboxInput = styled.input`
 
 const Checkbox = ({ isChecked, id }) => {
   const dispatch = useDispatch();
-  
+
   const toggleSelection = () => {
     dispatch(crossItem(id));
   };
+
   return (
     <CheckboxContainer>
       <CheckboxInput
